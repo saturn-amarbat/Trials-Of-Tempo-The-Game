@@ -1,193 +1,88 @@
 # Trials of Tempo
 
-> **An endless rhythm runner where music controls the chaos.**
+An endless rhythm-action runner built with p5.js where music difficulty scales dynamically with BPM.
 
-[![Play Now](https://img.shields.io/badge/▶️_Play_Now-GitHub_Pages-success?style=for-the-badge)](https://saturn-amarbat.github.io/Trials-Of-Tempo-The-Game/)
-[![View Code](https://img.shields.io/badge/📦_View_Code-Repository-blue?style=for-the-badge)](https://github.com/saturn-amarbat/Trials-Of-Tempo-The-Game)
+[**Play Now**](https://saturn-amarbat.github.io/Trials-Of-Tempo-The-Game/) | [View Source](https://github.com/saturn-amarbat/Trials-Of-Tempo-The-Game)
 
-Fly through beat-synced obstacle courses where difficulty scales with BPM. Built entirely in **pure JavaScript + p5.js** — no build tools, just open and play.
+## Overview
 
-**Perfect for:**
+This project started as a final assignment for ART151 exploring rhythm-based game mechanics. Players navigate a jetpack-equipped character through procedurally-spawned obstacles synchronized to an EDM soundtrack. The core challenge comes from escalating difficulty—each music loop increases BPM and obstacle density, requiring tighter timing and faster reflexes.
 
-- 🎯 Portfolio reviewers looking for interactive demos
-- 🎮 Rhythm game fans who love Geometry Dash meets Just Shapes & Beats
-- 🎓 Students learning game development with p5.js
-- 🏆 Game jam projects and quick prototypes
+Built entirely with vanilla JavaScript and p5.js libraries with no build system required.
 
----
-
-## 🎮 Elevator Pitch
-
-_Trials of Tempo_ is a student-built rhythm-action game where you pilot a jetpack hero through chambers that pulse, shift, and attack in sync with an EDM soundtrack. Every song loop amps up the BPM and obstacle density—stay on beat or get obliterated. Featuring 4 playable characters, custom parallax backgrounds, and a powerup system built from scratch.
-
----
-
-## 🎥 Gameplay Preview
+## Gameplay Preview
 
 <p align="center">
-  <img src="assets/visuals/gameplay.gif" alt="Trials of Tempo Gameplay" width="640">
+  <img src="assets/visuals/gameplay.gif" alt="Gameplay demonstration" width="640">
 </p>
 
-<p align="center">
-  <em>Beat-synced obstacles, parallax backgrounds, and dynamic difficulty scaling in action</em>
-</p>
+## Key Features
 
----
+- Dynamic difficulty scaling tied to music tempo and loop count
+- Beat-synchronized obstacle spawning and screen effects
+- Dash mechanic with visual cooldown tracking
+- Powerup system (speed boost, screen-clearing shockwave)
+- Parallax background layers for depth
+- Local high score persistence
+- Four playable characters with animated sprites
 
-## ✨ Features
+## Technical Implementation
 
-- **Music-driven difficulty scaling** — Game speed and obstacle density increase with BPM and loop count, keeping every run tense as you survive longer
-- **Beat-synchronized visuals** — Screen pulses, camera shake, and obstacle spawns are all timed to the music's rhythm
-- **Dynamic powerup system** — Speed boosts alter jet visuals; shockwave clears the screen in a burst of RGB energy
-- **Dash mechanic with cooldown UI** — Slide through tight gaps with a SHIFT-powered burst, tracked by an on-screen gauge
-- **Parallax scrolling backgrounds** — Multi-layer depth creates a sense of speed and immersion
-- **4 customizable characters** — Unlock and swap between animated GIF sprites mid-game
-- **Combo multiplier system** — Chain gem pickups to rack up massive scores
-- **Local high score persistence** — Beat your best and challenge friends on the same machine
+- **JavaScript + p5.js** for rendering and game loop
+- **p5.sound** for audio playback and timing synchronization
+- **p5play/Planck.js** for collision detection
+- No build tools or bundlers—runs directly in browser
 
----
+## Running Locally
 
-## 🛠️ Tech Stack
-
-- **Pure JavaScript + p5.js** — No webpack, no build step. Clone and serve.
-- **p5.sound** — Real-time audio analysis and playback rate manipulation
-- **p5play + Planck.js** — Physics helpers for collision and smooth movement
-- **GitHub Pages** — Deploy with zero configuration
-
----
-
-## 📦 Installation & Run Locally
-
-### Prerequisites
-
-- Python 3 (for local server) or any HTTP server
-
-### Steps
+**Requirements:** Python 3 (or any local HTTP server)
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/saturn-amarbat/Trials-Of-Tempo-The-Game.git
 cd Trials-Of-Tempo-The-Game
-
-# 2. Start a local server
 python3 -m http.server 8000
-
-# 3. Open in browser
-# Navigate to http://localhost:8000
-# Click once to enable audio (browser policy)
-# Press any key to skip intro video
 ```
 
-**Alternative servers:**
+Navigate to `http://localhost:8000`. Click once to enable audio, then press any key to skip the intro.
 
-```bash
-# Node.js
-npx serve
+Alternative servers: `npx serve` or `php -S localhost:8000`
 
-# PHP
-php -S localhost:8000
-```
+## Controls
 
----
+| Input             | Action           |
+| ----------------- | ---------------- |
+| WASD / Arrow Keys | Movement         |
+| Shift             | Dash             |
+| Space             | Activate powerup |
+| P                 | Pause            |
+| R                 | Restart          |
+| M                 | Main menu        |
 
-## 🎮 Controls
+## Development Status
 
-| Key                   | Action                    |
-| --------------------- | ------------------------- |
-| **WASD / Arrow Keys** | Fly up, down, left, right |
-| **Shift**             | Dash (with cooldown)      |
-| **Space**             | Activate queued powerup   |
-| **P**                 | Pause / resume            |
-| **R**                 | Restart run               |
-| **M**                 | Return to main menu       |
+Current version is a functional prototype (v0.8). Planned improvements include mobile controls, online leaderboards, additional boss mechanics, and difficulty selection UI.
 
----
+## Team
 
-## 📸 Screenshots
+- **Saturn Amarbat** — Lead developer (game loop, rhythm systems, audio sync, deployment)
+- **Tsuyoshi Harayama** — Developer (code refactoring, optimization)
+- **Frankie Salud** — Artist (character sprites, level design)
+- **Cacola** — Original music
 
-### Main Menu
+Built with p5.js, p5.sound, p5play, and Planck.js.
 
-![Menu Screenshot](assets/visuals/screenshot-menu.png)
+## License
 
-> Neon RGB aesthetic with beat-synced title pulsing
+MIT License (see [LICENSE](LICENSE)). Music rights reserved by Cacola.
 
-### In-Game Action
+## Documentation
 
-![Gameplay Screenshot](assets/visuals/screenshot-gameplay.png)
+Additional project docs:
 
-> Dynamic obstacles spawning on beat with parallax depth
-
-> 📷 **Note:** Screenshots coming soon! Run locally and capture your own gameplay.
-
----
-
-## 🚀 Project Status
-
-**Current Version:** Prototype (v0.8)  
-**Status:** Active Development
-
-### Next Steps
-
-- [ ] Polish level design (transition zones between BPM shifts)
-- [ ] Add online leaderboard (Firebase integration)
-- [ ] Mobile touch controls + responsive scaling
-- [ ] Boss encounter at high loop counts
-- [ ] Additional character animations (damage states)
+- [Game Design Document](docs/GAME_DESIGN.md)
+- [Development Roadmap](docs/ROADMAP.md)
+- [Git Workflow Guide](docs/GIT_GUIDE.md)
 
 ---
 
-## 👥 Credits
-
-### Team
-
-- **Saturn Amarbat** — Lead Developer  
-  _Game loop architecture, rhythm synchronization system, input handling, audio integration, GitHub Pages deployment, UI/UX design_
-- **Tsuyoshi Harayama (Yoshi)** — Developer  
-  _Code refactoring, modular component design, optimization_
-- **Frankie Salud** — Artist  
-  _Character sprite animation, level layout sketches, visual theme direction_
-
-### Music
-
-- **Cacola** — Original soundtrack (EDM compositions)
-
-### Tools
-
-- p5.js, p5.sound, p5play, Planck.js
-
----
-
-## 🔮 Future Work
-
-1. **Difficulty selector UI** — Easy/Normal/Hard modes with distinct balance curves
-2. **Level progression** — Unlock new songs and stages with checkpoints
-3. **Visual polish** — Add particle trails, screen distortion effects, and boss animations
-4. **Score analytics** — Track metrics like "longest dash chain" and "perfect beat hits"
-5. **Accessibility** — Colorblind mode, visual beat indicators for non-audio play
-
----
-
-## 📄 License
-
-MIT License — see [LICENSE](LICENSE) for details.  
-Music © Cacola — All rights reserved.
-
----
-
-## 📚 Documentation
-
-- [Game Design Doc](docs/GAME_DESIGN.md) — Full concept, narrative, mechanics
-- [Development Roadmap](docs/ROADMAP.md) — Phase-by-phase task breakdown
-- [Git Guide](docs/GIT_GUIDE.md) — Learn Git & GitHub workflow
-
----
-
-## 🌐 Links
-
-- **Play Live:** https://saturn-amarbat.github.io/Trials-Of-Tempo-The-Game/
-- **Source Code:** https://github.com/saturn-amarbat/Trials-Of-Tempo-The-Game
-- **Report Issues:** https://github.com/saturn-amarbat/Trials-Of-Tempo-The-Game/issues
-
----
-
-**Made with ❤️ for ART151 — Winter 2025**
+**ART151 Final Project — Winter 2025**

@@ -143,18 +143,18 @@ let bestTime = 0;
 
 function preload() {
   titleSong = loadSound(
-    "Unused-Assets.mp3",
+    "assets/audio/Unused-Assets.mp3",
     () => {},
     () => console.warn("Title missing"),
   );
   // gameSong = loadSound("Yellow-and-Purple.mp3", () => {}, () => console.warn("Main music missing"));
   gameIntroSong = loadSound(
-    "Yellow-and-Purple1.mp3",
+    "assets/audio/Yellow-and-Purple1.mp3",
     () => {},
     () => console.warn("First music missing"),
   );
   gameLoopSong = loadSound(
-    "Yellow-and-Purple2.mp3",
+    "assets/audio/Yellow-and-Purple2.mp3",
     () => {},
     () => console.warn("Loop music missing"),
   );
@@ -162,40 +162,40 @@ function preload() {
   // gameLoopSong  = loadSound("Yellow-and-Purple(loop).mp3");
 
   sfxButton = loadSound(
-    "ButtonPress.mp3",
+    "assets/audio/ButtonPress.mp3",
     () => {},
     () => console.warn("ButtonPress missing"),
   );
   sfxJet = loadSound(
-    "JetEngine.mp3",
+    "assets/audio/JetEngine.mp3",
     () => {},
     () => console.warn("JetEngine missing"),
   );
   sfxJetPower = loadSound(
-    "JetEnginePoweredUp.mp3",
+    "assets/audio/JetEnginePoweredUp.mp3",
     () => {},
     () => console.warn("JetPower missing"),
   );
   sfxPowerUp = loadSound(
-    "PowerUp.mp3",
+    "assets/audio/PowerUp.mp3",
     () => {},
     () => console.warn("PowerUp missing"),
   );
   sfxDamage = loadSound(
-    "Damage.mp3",
+    "assets/audio/Damage.mp3",
     () => {},
     () => console.warn("Damage missing"),
   );
   sfxGameOver = loadSound(
-    "GameOver.mp3",
+    "assets/audio/GameOver.mp3",
     () => {},
     () => console.warn("GameOver missing"),
   );
 
-  playerSheets[0] = loadImage("Player1.gif");
-  playerSheets[1] = loadImage("Player2.gif");
-  playerSheets[2] = loadImage("Player3.gif");
-  playerSheets[3] = loadImage("Player4.gif");
+  playerSheets[0] = loadImage("assets/visuals/Player1.gif");
+  playerSheets[1] = loadImage("assets/visuals/Player2.gif");
+  playerSheets[2] = loadImage("assets/visuals/Player3.gif");
+  playerSheets[3] = loadImage("assets/visuals/Player4.gif");
 }
 
 function setup() {
@@ -208,7 +208,7 @@ function setup() {
   initParallax();
   resetPlayer();
 
-  introVideo = createVideo("Opening.mp4");
+  introVideo = createVideo("assets/visuals/Opening.mp4");
   introVideo.size(LOGICAL_WIDTH, LOGICAL_HEIGHT);
   introVideo.hide(); // draw manually
   introVideo.volume(0.6);

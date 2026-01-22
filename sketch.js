@@ -608,6 +608,12 @@ function updateGame() {
   player.x += player.vx;
   player.y += player.vy;
 
+  // Update Trail
+  if (frameCount % 2 === 0) {
+    player.trail.push({ x: player.x, y: player.y });
+    if (player.trail.length > 8) player.trail.shift();
+  }
+
   player.x = constrain(player.x, 30, LOGICAL_WIDTH - 30);
   player.y = constrain(player.y, cameraY + 20, cameraY + LOGICAL_HEIGHT - 20);
 
@@ -723,7 +729,11 @@ function drawGame() {
   for (let gem of collectibles) drawCollectible(gem);
 
   drawPlayer();
+  
+  push();
+  blendMode(ADD);
   for (let p of particles) p.draw();
+  pop();
 
   if (shockwaveActive) {
     noFill();
@@ -782,6 +792,19 @@ function drawPlayer() {
   let sy = row * frameH;
 
   push();
+  
+  // Draw Trail
+  if (player.trail) {
+      noStroke();
+      for (let i = 0; i < player.trail.length; i++) {
+        let t = player.trail[i];
+        let alpha = map(i, 0, player.trail.length, 0, 150);
+        let size = map(i, 0, player.trail.length, 10, 30);
+        fill(rgbHue, 80, 100, alpha);
+        ellipse(t.x, t.y, size, size);
+      }
+  }
+
   translate(player.x, player.y);
 
   if (playerInvincible > 0 && frameCount % 6 < 3) {
@@ -1278,6 +1301,7 @@ function resetPlayer() {
     vy: 0,
     width: 26,
     height: 34,
+    trail: []
   };
   playerHealth = playerMaxHealth;
   playerInvincible = 60;

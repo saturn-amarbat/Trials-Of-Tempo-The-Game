@@ -31,7 +31,7 @@ let shadowSprite, highlightSprite;
 let sfxButton, sfxJet, sfxJetPower, sfxPowerUp, sfxDamage, sfxGameOver;
 
 // ─── GAME STATE ───
-let gameState = "intro";
+let gameState = "waitingForInput";
 let lastGameState = "";
 let introVideo;
 let autoScrollSpeed = 2;
@@ -221,9 +221,7 @@ function setup() {
   introVideo.size(LOGICAL_WIDTH, LOGICAL_HEIGHT);
   introVideo.hide(); // draw manually
   introVideo.volume(0.6);
-  introVideo.play();
-
-  // setupMusicLoopSpeeding();
+  // Video will be played after user interaction to satisfy autoplay policies
 }
 
 // ─── DYNAMIC SCALING LOGIC ───
@@ -295,6 +293,9 @@ function draw() {
   }
 
   switch (gameState) {
+    case "waitingForInput":
+      drawWaitingScreen();
+      break;
     case "intro":
       drawIntro();
       break;
@@ -429,8 +430,6 @@ function drawTitle() {
   fill(0, 0, 60);
   textSize(12);
   text("Music by Cacola", LOGICAL_WIDTH / 2, LOGICAL_HEIGHT - 30);
-
-  drawBeatIndicator();
 }
 
 function drawMenuButton(label, x, y, w, h, mx, my) {
@@ -950,7 +949,6 @@ function drawGameUI() {
   textSize(12);
   text("DIFFICULTY: " + difficulty.toUpperCase(), 20, 4);
   pop();
-  drawBeatIndicator();
 
   let sessionTime = (frameCount - sessionStartFrame) / 60;
   if (sessionTime < 10) {
@@ -1163,24 +1161,6 @@ function onBeat() {
     obs.jitterY = random([-1, 1]) * random(jitterForce / 2, jitterForce);
     obs.rotation += random(20, 60);
   }
-}
-
-function drawBeatIndicator() {
-  let beatProgress = (frameCount - lastBeatFrame) / beatInterval;
-  let size = 20 + sin(beatProgress * PI) * 15;
-  push();
-  noStroke();
-  fill(rgbHue, 90, 100, 150);
-  ellipse(LOGICAL_WIDTH - 50, LOGICAL_HEIGHT - 50, size, size);
-  noFill();
-  stroke(rgbHue, 90, 100);
-  strokeWeight(2);
-  ellipse(LOGICAL_WIDTH - 50, LOGICAL_HEIGHT - 50, 40, 40);
-  let pulseAlpha = 40 + 40 * sin(beatProgress * PI);
-  stroke(rgbHue, 60, 80, pulseAlpha);
-  strokeWeight(4);
-  rect(4, 4, LOGICAL_WIDTH - 8, LOGICAL_HEIGHT - 8, 10);
-  pop();
 }
 
 // ─── COLLISION ───
@@ -1493,6 +1473,15 @@ let creditStartFrame = 0;
 function mousePressed() {
   let mx = getLogicalMouseX();
   let my = getLogicalMouseY();
+
+  if (gameState === "waitingForInput") {
+    gameState = "intro";
+    if (introVideo) {
+      introVideo.time(0);
+      introVideo.play();
+    }
+    return;
+  }
 
   if (gameState === "intro") {
     skipIntro();
@@ -1830,6 +1819,17 @@ function loadHighScore() {
 function saveHighScore() {
   localStorage.setItem("tot_highscore", highScore);
   localStorage.setItem("tot_besttime", bestTime);
+}
+
+function drawWaitingScreen() {
+  background(0);
+  fill(0, 0, 100);
+  textAlign(CENTER, CENTER);
+  textSize(24);
+  text("CLICK TO START", LOGICAL_WIDTH / 2, LOGICAL_HEIGHT / 2);
+  textSize(14);
+  fill(0, 0, 70);
+  text("Initialize Audio & Video", LOGICAL_WIDTH / 2, LOGICAL_HEIGHT / 2 + 30);
 }
 
 function drawIntro() {

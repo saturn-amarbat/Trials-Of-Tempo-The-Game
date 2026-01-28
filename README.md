@@ -86,3 +86,4 @@ Additional project docs:
 ---
 
 **ART151 Final Project — Winter 2025**
+<!-- Maintenance update -->
